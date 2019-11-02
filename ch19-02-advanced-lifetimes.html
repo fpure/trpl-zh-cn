@@ -1,0 +1,467 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>高级生命周期 - Rust 程序设计语言 简体中文版</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Rust 程序设计语言 简体中文版">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="_FontAwesome/css/font-awesome.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="ferris.css">
+        
+
+        
+
+    </head>
+    <body class="light">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="affix"><a href="foreword.html">前言</a></li><li class="affix"><a href="ch00-00-introduction.html">介绍</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> 入门指南</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> 安装</a></li><li><a href="ch01-02-hello-world.html"><strong aria-hidden="true">1.2.</strong> Hello, World!</a></li><li><a href="ch01-03-hello-cargo.html"><strong aria-hidden="true">1.3.</strong> Hello, Cargo!</a></li></ol></li><li><a href="ch02-00-guessing-game-tutorial.html"><strong aria-hidden="true">2.</strong> 猜猜看游戏教程</a></li><li><a href="ch03-00-common-programming-concepts.html"><strong aria-hidden="true">3.</strong> 常见编程概念</a></li><li><ol class="section"><li><a href="ch03-01-variables-and-mutability.html"><strong aria-hidden="true">3.1.</strong> 变量与可变性</a></li><li><a href="ch03-02-data-types.html"><strong aria-hidden="true">3.2.</strong> 数据类型</a></li><li><a href="ch03-03-how-functions-work.html"><strong aria-hidden="true">3.3.</strong> 函数如何工作</a></li><li><a href="ch03-04-comments.html"><strong aria-hidden="true">3.4.</strong> 注释</a></li><li><a href="ch03-05-control-flow.html"><strong aria-hidden="true">3.5.</strong> 控制流</a></li></ol></li><li><a href="ch04-00-understanding-ownership.html"><strong aria-hidden="true">4.</strong> 认识所有权</a></li><li><ol class="section"><li><a href="ch04-01-what-is-ownership.html"><strong aria-hidden="true">4.1.</strong> 什么是所有权？</a></li><li><a href="ch04-02-references-and-borrowing.html"><strong aria-hidden="true">4.2.</strong> 引用与借用</a></li><li><a href="ch04-03-slices.html"><strong aria-hidden="true">4.3.</strong> Slices</a></li></ol></li><li><a href="ch05-00-structs.html"><strong aria-hidden="true">5.</strong> 使用结构体来组织相关联的数据</a></li><li><ol class="section"><li><a href="ch05-01-defining-structs.html"><strong aria-hidden="true">5.1.</strong> 定义并实例化结构体</a></li><li><a href="ch05-02-example-structs.html"><strong aria-hidden="true">5.2.</strong> 一个使用结构体的示例程序</a></li><li><a href="ch05-03-method-syntax.html"><strong aria-hidden="true">5.3.</strong> 方法语法</a></li></ol></li><li><a href="ch06-00-enums.html"><strong aria-hidden="true">6.</strong> 枚举与模式匹配</a></li><li><ol class="section"><li><a href="ch06-01-defining-an-enum.html"><strong aria-hidden="true">6.1.</strong> 定义枚举</a></li><li><a href="ch06-02-match.html"><strong aria-hidden="true">6.2.</strong> match 控制流运算符</a></li><li><a href="ch06-03-if-let.html"><strong aria-hidden="true">6.3.</strong> if let 简洁控制流</a></li></ol></li><li><a href="ch07-00-managing-growing-projects-with-packages-crates-and-modules.html"><strong aria-hidden="true">7.</strong> 使用包、Crate和模块管理不断增长的项目</a></li><li><ol class="section"><li><a href="ch07-01-packages-and-crates.html"><strong aria-hidden="true">7.1.</strong> 包和 crate</a></li><li><a href="ch07-02-defining-modules-to-control-scope-and-privacy.html"><strong aria-hidden="true">7.2.</strong> 定义模块来控制作用域与私有性</a></li><li><a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"><strong aria-hidden="true">7.3.</strong> 路径来引用模块树中的项</a></li><li><a href="ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"><strong aria-hidden="true">7.4.</strong> 使用 use 关键字将名称引入作用域</a></li><li><a href="ch07-05-separating-modules-into-different-files.html"><strong aria-hidden="true">7.5.</strong> 将模块分割进不同文件</a></li></ol></li><li><a href="ch08-00-common-collections.html"><strong aria-hidden="true">8.</strong> 常见集合</a></li><li><ol class="section"><li><a href="ch08-01-vectors.html"><strong aria-hidden="true">8.1.</strong> vector</a></li><li><a href="ch08-02-strings.html"><strong aria-hidden="true">8.2.</strong> 字符串</a></li><li><a href="ch08-03-hash-maps.html"><strong aria-hidden="true">8.3.</strong> 哈希 map</a></li></ol></li><li><a href="ch09-00-error-handling.html"><strong aria-hidden="true">9.</strong> 错误处理</a></li><li><ol class="section"><li><a href="ch09-01-unrecoverable-errors-with-panic.html"><strong aria-hidden="true">9.1.</strong> panic! 与不可恢复的错误</a></li><li><a href="ch09-02-recoverable-errors-with-result.html"><strong aria-hidden="true">9.2.</strong> Result 与可恢复的错误</a></li><li><a href="ch09-03-to-panic-or-not-to-panic.html"><strong aria-hidden="true">9.3.</strong> panic! 还是不 panic!</a></li></ol></li><li><a href="ch10-00-generics.html"><strong aria-hidden="true">10.</strong> 泛型、trait 与生命周期</a></li><li><ol class="section"><li><a href="ch10-01-syntax.html"><strong aria-hidden="true">10.1.</strong> 泛型数据类型</a></li><li><a href="ch10-02-traits.html"><strong aria-hidden="true">10.2.</strong> trait：定义共享的行为</a></li><li><a href="ch10-03-lifetime-syntax.html"><strong aria-hidden="true">10.3.</strong> 生命周期与引用有效性</a></li></ol></li><li><a href="ch11-00-testing.html"><strong aria-hidden="true">11.</strong> 测试</a></li><li><ol class="section"><li><a href="ch11-01-writing-tests.html"><strong aria-hidden="true">11.1.</strong> 编写测试</a></li><li><a href="ch11-02-running-tests.html"><strong aria-hidden="true">11.2.</strong> 运行测试</a></li><li><a href="ch11-03-test-organization.html"><strong aria-hidden="true">11.3.</strong> 测试的组织结构</a></li></ol></li><li><a href="ch12-00-an-io-project.html"><strong aria-hidden="true">12.</strong> 一个 I/O 项目：构建命令行程序</a></li><li><ol class="section"><li><a href="ch12-01-accepting-command-line-arguments.html"><strong aria-hidden="true">12.1.</strong> 接受命令行参数</a></li><li><a href="ch12-02-reading-a-file.html"><strong aria-hidden="true">12.2.</strong> 读取文件</a></li><li><a href="ch12-03-improving-error-handling-and-modularity.html"><strong aria-hidden="true">12.3.</strong> 重构以改进模块化与错误处理</a></li><li><a href="ch12-04-testing-the-librarys-functionality.html"><strong aria-hidden="true">12.4.</strong> 采用测试驱动开发完善库的功能</a></li><li><a href="ch12-05-working-with-environment-variables.html"><strong aria-hidden="true">12.5.</strong> 处理环境变量</a></li><li><a href="ch12-06-writing-to-stderr-instead-of-stdout.html"><strong aria-hidden="true">12.6.</strong> 将错误信息输出到标准错误而不是标准输出</a></li></ol></li><li><a href="ch13-00-functional-features.html"><strong aria-hidden="true">13.</strong> Rust 中的函数式语言功能：迭代器与闭包</a></li><li><ol class="section"><li><a href="ch13-01-closures.html"><strong aria-hidden="true">13.1.</strong> 闭包：可以捕获其环境的匿名函数</a></li><li><a href="ch13-02-iterators.html"><strong aria-hidden="true">13.2.</strong> 使用迭代器处理元素序列</a></li><li><a href="ch13-03-improving-our-io-project.html"><strong aria-hidden="true">13.3.</strong> 改进之前的 I/O 项目</a></li><li><a href="ch13-04-performance.html"><strong aria-hidden="true">13.4.</strong> 性能比较：循环对迭代器</a></li></ol></li><li><a href="ch14-00-more-about-cargo.html"><strong aria-hidden="true">14.</strong> 更多关于 Cargo 和 Crates.io 的内容</a></li><li><ol class="section"><li><a href="ch14-01-release-profiles.html"><strong aria-hidden="true">14.1.</strong> 采用发布配置自定义构建</a></li><li><a href="ch14-02-publishing-to-crates-io.html"><strong aria-hidden="true">14.2.</strong> 将 crate 发布到 Crates.io</a></li><li><a href="ch14-03-cargo-workspaces.html"><strong aria-hidden="true">14.3.</strong> Cargo 工作空间</a></li><li><a href="ch14-04-installing-binaries.html"><strong aria-hidden="true">14.4.</strong> 使用 cargo install 从 Crates.io 安装二进制文件</a></li><li><a href="ch14-05-extending-cargo.html"><strong aria-hidden="true">14.5.</strong> Cargo 自定义扩展命令</a></li></ol></li><li><a href="ch15-00-smart-pointers.html"><strong aria-hidden="true">15.</strong> 智能指针</a></li><li><ol class="section"><li><a href="ch15-01-box.html"><strong aria-hidden="true">15.1.</strong> Box<T> 指向堆上数据，并且可确定大小</a></li><li><a href="ch15-02-deref.html"><strong aria-hidden="true">15.2.</strong> 通过 Deref trait 将智能指针当作常规引用处理</a></li><li><a href="ch15-03-drop.html"><strong aria-hidden="true">15.3.</strong> Drop Trait 运行清理代码</a></li><li><a href="ch15-04-rc.html"><strong aria-hidden="true">15.4.</strong> Rc<T> 引用计数智能指针</a></li><li><a href="ch15-05-interior-mutability.html"><strong aria-hidden="true">15.5.</strong> RefCell<T> 与内部可变性模式</a></li><li><a href="ch15-06-reference-cycles.html"><strong aria-hidden="true">15.6.</strong> 引用循环与内存泄漏是安全的</a></li></ol></li><li><a href="ch16-00-concurrency.html"><strong aria-hidden="true">16.</strong> 无畏并发</a></li><li><ol class="section"><li><a href="ch16-01-threads.html"><strong aria-hidden="true">16.1.</strong> 线程</a></li><li><a href="ch16-02-message-passing.html"><strong aria-hidden="true">16.2.</strong> 消息传递</a></li><li><a href="ch16-03-shared-state.html"><strong aria-hidden="true">16.3.</strong> 共享状态</a></li><li><a href="ch16-04-extensible-concurrency-sync-and-send.html"><strong aria-hidden="true">16.4.</strong> 可扩展的并发：Sync 与 Send</a></li></ol></li><li><a href="ch17-00-oop.html"><strong aria-hidden="true">17.</strong> Rust 的面向对象编程特性</a></li><li><ol class="section"><li><a href="ch17-01-what-is-oo.html"><strong aria-hidden="true">17.1.</strong> 面向对象语言的特点</a></li><li><a href="ch17-02-trait-objects.html"><strong aria-hidden="true">17.2.</strong> 为使用不同类型的值而设计的 trait 对象</a></li><li><a href="ch17-03-oo-design-patterns.html"><strong aria-hidden="true">17.3.</strong> 面向对象设计模式的实现</a></li></ol></li><li><a href="ch18-00-patterns.html"><strong aria-hidden="true">18.</strong> 模式用来匹配值的结构</a></li><li><ol class="section"><li><a href="ch18-01-all-the-places-for-patterns.html"><strong aria-hidden="true">18.1.</strong> 所有可能会用到模式的位置</a></li><li><a href="ch18-02-refutability.html"><strong aria-hidden="true">18.2.</strong> Refutability：何时模式可能会匹配失败</a></li><li><a href="ch18-03-pattern-syntax.html"><strong aria-hidden="true">18.3.</strong> 模式的全部语法</a></li></ol></li><li><a href="ch19-00-advanced-features.html"><strong aria-hidden="true">19.</strong> 高级特征</a></li><li><ol class="section"><li><a href="ch19-01-unsafe-rust.html"><strong aria-hidden="true">19.1.</strong> 不安全的 Rust</a></li><li><a href="ch19-02-advanced-lifetimes.html" class="active"><strong aria-hidden="true">19.2.</strong> 高级生命周期</a></li><li><a href="ch19-03-advanced-traits.html"><strong aria-hidden="true">19.3.</strong> 高级 trait</a></li><li><a href="ch19-04-advanced-types.html"><strong aria-hidden="true">19.4.</strong> 高级类型</a></li><li><a href="ch19-05-advanced-functions-and-closures.html"><strong aria-hidden="true">19.5.</strong> 高级函数与闭包</a></li><li><a href="ch19-06-macros.html"><strong aria-hidden="true">19.6.</strong> 宏</a></li></ol></li><li><a href="ch20-00-final-project-a-web-server.html"><strong aria-hidden="true">20.</strong> 最后的项目: 构建多线程 web server</a></li><li><ol class="section"><li><a href="ch20-01-single-threaded.html"><strong aria-hidden="true">20.1.</strong> 单线程 web server</a></li><li><a href="ch20-02-multithreaded.html"><strong aria-hidden="true">20.2.</strong> 将单线程 server 变为多线程 server</a></li><li><a href="ch20-03-graceful-shutdown-and-cleanup.html"><strong aria-hidden="true">20.3.</strong> 优雅停机与清理</a></li></ol></li><li><a href="appendix-00.html"><strong aria-hidden="true">21.</strong> 附录</a></li><li><ol class="section"><li><a href="appendix-01-keywords.html"><strong aria-hidden="true">21.1.</strong> A - 关键字</a></li><li><a href="appendix-02-operators.html"><strong aria-hidden="true">21.2.</strong> B - 运算符与符号</a></li><li><a href="appendix-03-derivable-traits.html"><strong aria-hidden="true">21.3.</strong> C - 可派生的 trait</a></li><li><a href="appendix-04-useful-development-tools.html"><strong aria-hidden="true">21.4.</strong> D - 实用开发工具</a></li><li><a href="appendix-05-editions.html"><strong aria-hidden="true">21.5.</strong> E - 版本</a></li><li><a href="appendix-06-translation.html"><strong aria-hidden="true">21.6.</strong> F - 本书译本</a></li><li><a href="appendix-07-nightly-rust.html"><strong aria-hidden="true">21.7.</strong> G - Rust 是如何开发的与 “Nightly Rust”</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Rust 程序设计语言 简体中文版</h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="ch19-02-advanced-lifetimes.html#a高级生命周期" id="a高级生命周期"><h2>高级生命周期</h2></a>
+<blockquote>
+<p><a href="https://github.com/rust-lang/book/blob/master/src/ch19-02-advanced-lifetimes.md">ch19-02-advanced-lifetimes.md</a>
+<br>
+commit 1fedfc4b96c2017f64ecfcf41a0a07e2e815f24f</p>
+</blockquote>
+<p>回顾第十章 “生命周期与引用有效性” 部分，我们学习了怎样使用生命周期参数注解引用来帮助 Rust 理解不同引用的生命周期如何相互联系。我们理解了每一个引用都有生命周期，不过大部分情况 Rust 允许我们省略生命周期。这里我们会看到三个还未涉及到的生命周期高级特征：</p>
+<ul>
+<li>生命周期子类型（lifetime subtyping），一个确保某个生命周期长于另一个生命周期的方式</li>
+<li>生命周期 bound（lifetime bounds），用于指定泛型引用的生命周期</li>
+<li>trait 对象生命周期（trait object lifetimes），以及他们是如何推断的，以及何时需要指定</li>
+<li>匿名生命周期：使（生命周期）省略更为明显</li>
+</ul>
+<a class="header" href="ch19-02-advanced-lifetimes.html#a生命周期子类型确保某个生命周期长于另一个生命周期" id="a生命周期子类型确保某个生命周期长于另一个生命周期"><h3>生命周期子类型确保某个生命周期长于另一个生命周期</h3></a>
+<p>生命周期子类型是一个指定某个生命周期应该长于另一个生命周期的方式。为了探索生命周期子类型，想象一下我们想要编写一个解析器。为此会有一个储存了需要解析的字符串的引用的结构体 <code>Context</code>。解析器将会解析字符串并返回成功或失败。解析器需要借用 <code>Context</code> 来进行解析。其实现看起来像示例 19-12 中的代码，除了缺少了必须的生命周期注解，所以这还不能编译：</p>
+<p><span class="filename">文件名: src/lib.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile">struct Context(&amp;str);
+
+struct Parser {
+    context: &amp;Context,
+}
+
+impl Parser {
+    fn parse(&amp;self) -&gt; Result&lt;(), &amp;str&gt; {
+        Err(&amp;self.context.0[1..])
+    }
+}
+</code></pre>
+<p><span class="caption">示例 19-12: 定义一个不带生命周期注解的解析器</span></p>
+<p>编译代码会导致一个表明 Rust 期望 <code>Context</code> 中字符串 slice 和 <code>Parser</code> 中 <code>Context</code> 的引用的生命周期的错误。</p>
+<p>为了简单起见，<code>parse</code> 方法返回 <code>Result&lt;(), &amp;str&gt;</code>。也就是说，成功时不做任何操作，失败时则返回字符串 slice 没有正确解析的部分。真实的实现将会包含比这更多的错误信息，并将会在解析成功时返回实际结果，不过我们将去掉这些部分的实现，因为他们与这个例子的生命周期部分并不相关。</p>
+<p>为了保持代码简单，我们不准备实际编写任何解析逻辑。解析逻辑的某处非常有可能通过返回引用输入中无效部分的错误来处理无效输入，而考虑到生命周期，这个引用是使得这个例子有趣的地方。所以我们将假设解析器的逻辑为输入的第一个字节之后是无效的。注意如果第一个字节并不位于一个有效的字符范围内（比如 Unicode）代码将会 panic；这里又一次简化了例子以专注于涉及到的生命周期。</p>
+<p>为了使代码能够编译，我们需要放入 <code>Context</code> 中字符串 slice 和 <code>Parser</code> 中 <code>Context</code> 引用的生命周期参数。最直接的方法是在每处都使用相同的生命周期，如示例 19-13 所示。回忆第十章 “结构体定义中的生命周期注解” 部分，<code>struct Context&lt;'a&gt;</code>、<code>struct Parser&lt;'a&gt;</code> 和 <code>impl&lt;'a&gt;</code> 每一个都声明了一个新的生命周期参数。虽然这些名字碰巧都一样，例子中声明的三个生命周期参数并不相关。</p>
+<p><span class="filename">文件名: src/lib.rs</span></p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+struct Context&lt;'a&gt;(&amp;'a str);
+
+struct Parser&lt;'a&gt; {
+    context: &amp;'a Context&lt;'a&gt;,
+}
+
+impl&lt;'a&gt; Parser&lt;'a&gt; {
+    fn parse(&amp;self) -&gt; Result&lt;(), &amp;str&gt; {
+        Err(&amp;self.context.0[1..])
+    }
+}
+#}</code></pre></pre>
+<p><span class="caption">示例 19-13: 将所有 <code>Context</code> 和 <code>Parser</code> 中的引用标注生命周期参数</span></p>
+<p>这次可以编译了，并告诉了 Rust <code>Parser</code> 存放了一个 <code>Context</code> 的引用，拥有生命周期 <code>'a</code>，且 <code>Context</code> 存放了一个字符串 slice，它也与 <code>Parser</code> 中 <code>Context</code> 的引用存在的一样久。Rust 编译器的错误信息表明这些引用需要生命周期参数，现在我们增加了这些生命周期参数。</p>
+<p>接下来，在示例 19-14 中，让我们编写一个获取 <code>Context</code> 的实例，使用 <code>Parser</code> 来解析其内容，并返回 <code>parse</code> 的返回值的函数。这还不能运行：</p>
+<p><span class="filename">文件名: src/lib.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile">fn parse_context(context: Context) -&gt; Result&lt;(), &amp;str&gt; {
+    Parser { context: &amp;context }.parse()
+}
+</code></pre>
+<p><span class="caption">示例 19-14: 一个增加获取 <code>Context</code> 并使用 <code>Parser</code> 的函数 <code>parse_context</code> 的尝试</span></p>
+<p>当尝试编译这段额外带有 <code>parse_context</code> 函数的代码时会得到两个相当冗长的错误：</p>
+<pre><code class="language-text">error[E0597]: borrowed value does not live long enough
+  --&gt; src/lib.rs:14:5
+   |
+14 |     Parser { context: &amp;context }.parse()
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ does not live long enough
+15 | }
+   | - temporary value only lives until here
+   |
+note: borrowed value must be valid for the anonymous lifetime #1 defined on the function body at 13:1...
+  --&gt; src/lib.rs:13:1
+   |
+13 | / fn parse_context(context: Context) -&gt; Result&lt;(), &amp;str&gt; {
+14 | |     Parser { context: &amp;context }.parse()
+15 | | }
+   | |_^
+
+error[E0597]: `context` does not live long enough
+  --&gt; src/lib.rs:14:24
+   |
+14 |     Parser { context: &amp;context }.parse()
+   |                        ^^^^^^^ does not live long enough
+15 | }
+   | - borrowed value only lives until here
+   |
+note: borrowed value must be valid for the anonymous lifetime #1 defined on the function body at 13:1...
+  --&gt; src/lib.rs:13:1
+   |
+13 | / fn parse_context(context: Context) -&gt; Result&lt;(), &amp;str&gt; {
+14 | |     Parser { context: &amp;context }.parse()
+15 | | }
+   | |_^
+</code></pre>
+<p>这些错误表明我们创建的两个 <code>Parser</code> 实例和 <code>context</code> 参数从 <code>Parser</code> 被创建开始一直存活到 <code>parse_context</code> 函数结束。不过他们都需要在整个函数的生命周期中都有效。</p>
+<p>换句话说，<code>Parser</code> 和 <code>context</code> 需要比整个函数 <strong>长寿</strong>（<em>outlive</em>）并在函数开始之前和结束之后都有效以确保代码中的所有引用始终是有效的。虽然我们创建的两个 <code>Parser</code> 和 <code>context</code> 参数在函数的结尾就离开了作用域，因为 <code>parse_context</code> 获取了 <code>context</code> 的所有权。</p>
+<p>为了理解为什么会得到这些错误，让我们再次看看示例 19-13 中的定义，特别是 <code>parse</code> 方法的签名中的引用：</p>
+<pre><code class="language-rust ignore">    fn parse(&amp;self) -&gt; Result&lt;(), &amp;str&gt; {
+</code></pre>
+<p>还记得（生命周期）省略规则吗？如果标注了引用生命周期而不加以省略，签名看起来应该是这样：</p>
+<pre><code class="language-rust ignore">    fn parse&lt;'a&gt;(&amp;'a self) -&gt; Result&lt;(), &amp;'a str&gt; {
+</code></pre>
+<p>正是如此，<code>parse</code> 返回值的错误部分的生命周期与 <code>Parser</code> 实例的生命周期（<code>parse</code> 方法签名中的 <code>&amp;self</code>）相绑定。这就可以理解了：因为返回的字符串 slice 引用了 <code>Parser</code> 存放的 <code>Context</code> 实例中的字符串 slice，同时在 <code>Parser</code> 结构体的定义中指定了 <code>Parser</code> 中存放的 <code>Context</code> 引用的生命周期和 <code>Context</code> 中存放的字符串 slice 的生命周期应该一致。</p>
+<p>问题是 <code>parse_context</code> 函数返回 <code>parse</code> 的返回值，所以 <code>parse_context</code> 返回值的生命周期也与 <code>Parser</code> 的生命周期相联系。不过 <code>parse_context</code> 函数中创建的 <code>Parser</code> 实例并不能存活到函数结束之后（它是临时的），同时 <code>context</code> 将会在函数的结尾离开作用域（<code>parse_context</code> 获取了它的所有权）。</p>
+<p>Rust 认为我们尝试返回一个在函数结尾离开作用域的值，因为我们将所有的生命周期都标注为相同的生命周期参数。这告诉了 Rust <code>Context</code> 中存放的字符串 slice 的生命周期与 <code>Parser</code> 中存放的 <code>Context</code> 引用的生命周期一致。</p>
+<p><code>parse_context</code> 函数并不知道 <code>parse</code> 函数里面是什么，返回的字符串 slice 将比 <code>Context</code> 和 <code>Parser</code> 都存活的更久，同时 <code>parse_context</code> 返回的引用指向字符串 slice，而不是 <code>Context</code> 或 <code>Parser</code>。</p>
+<p>通过了解 <code>parse</code> 实现所做的工作，可以知道 <code>parse</code> 的返回值（的生命周期）与 <code>Parser</code> 相联系的唯一理由是它引用了 <code>Parser</code> 的 <code>Context</code>，也就是引用了这个字符串 slice，这正是 <code>parse_context</code> 所需要关心的生命周期。需要一个方法来告诉 Rust <code>Context</code> 中的字符串 slice 与 <code>Parser</code> 中 <code>Context</code> 的引用有着不同的生命周期，而且 <code>parse_context</code> 返回值与 <code>Context</code> 中字符串 slice 的生命周期相联系。</p>
+<p>首先尝试像示例 19-15 那样给予 <code>Parser</code> 和 <code>Context</code> 不同的生命周期参数。这里选择了生命周期参数名 <code>'s</code> 和 <code>'c</code> 是为了使得 <code>Context</code> 中字符串 slice 与 <code>Parser</code> 中 <code>Context</code> 引用的生命周期显得更明了（英文首字母）。注意这并不能完全解决问题，不过这是一个开始，我们将看看为什么这还不足以能够编译代码。</p>
+<p><span class="filename">文件名: src/lib.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile">struct Context&lt;'s&gt;(&amp;'s str);
+
+struct Parser&lt;'c, 's&gt; {
+    context: &amp;'c Context&lt;'s&gt;,
+}
+
+impl&lt;'c, 's&gt; Parser&lt;'c, 's&gt; {
+    fn parse(&amp;self) -&gt; Result&lt;(), &amp;'s str&gt; {
+        Err(&amp;self.context.0[1..])
+    }
+}
+
+fn parse_context(context: Context) -&gt; Result&lt;(), &amp;str&gt; {
+    Parser { context: &amp;context }.parse()
+}
+</code></pre>
+<p><span class="caption">示例 19-15: 为字符串 slice 和 <code>Context</code> 的引用指定不同的生命周期参数</span></p>
+<p>这里在与示例 19-13 完全相同的地方标注了引用的生命周期，不过根据引用是字符串 slice 或 <code>Context</code> 与否使用了不同的参数。另外还在 <code>parse</code> 返回值的字符串 slice 部分增加了注解来表明它与 <code>Context</code> 中字符串 slice 的生命周期相关联。</p>
+<p>这里是现在尝试编译时得到的错误：</p>
+<pre><code class="language-text">error[E0491]: in type `&amp;'c Context&lt;'s&gt;`, reference has a longer lifetime than the data it references
+ --&gt; src/lib.rs:4:5
+  |
+4 |     context: &amp;'c Context&lt;'s&gt;,
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+note: the pointer is valid for the lifetime 'c as defined on the struct at 3:1
+ --&gt; src/lib.rs:3:1
+  |
+3 | / struct Parser&lt;'c, 's&gt; {
+4 | |     context: &amp;'c Context&lt;'s&gt;,
+5 | | }
+  | |_^
+note: but the referenced data is only valid for the lifetime 's as defined on the struct at 3:1
+ --&gt; src/lib.rs:3:1
+  |
+3 | / struct Parser&lt;'c, 's&gt; {
+4 | |     context: &amp;'c Context&lt;'s&gt;,
+5 | | }
+  | |_^
+</code></pre>
+<p>Rust 并不知道 <code>'c</code> 与 <code>'s</code> 之间的任何联系。为了保证有效性，<code>Context</code> 中引用的带有生命周期 <code>'s</code> 的数据需要遵守它比带有生命周期 <code>'c</code> 的 <code>Context</code> 的引用存活得更久的保证。如果 <code>'s</code> 不比 <code>'c</code> 更长久，那么 <code>Context</code> 的引用可能不再有效。</p>
+<p>这就引出了本部分的要点：Rust 的 <strong>生命周期子类型</strong>（<em>lifetime subtyping</em>）功能，这是一个指定一个生命周期不会短于另一个的方法。在声明生命周期参数的尖括号中，可以照常声明一个生命周期 <code>'a</code>，并通过语法 <code>'b: 'a</code> 声明一个不短于 <code>'a</code> 的生命周期 <code>'b</code>。</p>
+<p>在 <code>Parser</code> 的定义中，为了表明 <code>'s</code>（字符串 slice 的生命周期）保证至少与 <code>'c</code>（<code>Context</code> 引用的生命周期）一样长，需将生命周期声明改为如此：</p>
+<p><span class="filename">文件名: src/lib.rs</span></p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+# struct Context&lt;'a&gt;(&amp;'a str);
+#
+struct Parser&lt;'c, 's: 'c&gt; {
+    context: &amp;'c Context&lt;'s&gt;,
+}
+#}</code></pre></pre>
+<p>现在 <code>Parser</code> 中 <code>Context</code> 的引用与 <code>Context</code> 中字符串 slice 就有了不同的生命周期，并且保证了字符串 slice 的生命周期比 <code>Context</code> 引用的要长。</p>
+<p>这是一个非常冗长的例子，不过正如本章的开头所提到的，这类功能是很小众的。你并不会经常需要这个语法，不过当出现类似这样的情形时，却还是有地方可以参考的。</p>
+<a class="header" href="ch19-02-advanced-lifetimes.html#a生命周期-bound-用于泛型的引用" id="a生命周期-bound-用于泛型的引用"><h3>生命周期 bound 用于泛型的引用</h3></a>
+<p>在第十章 “trait bound” 部分，我们讨论了如何在泛型类型上使用 trait bound。也可以像泛型那样为生命周期参数增加限制，这被称为 <strong>生命周期 bound</strong>（<em>lifetime bounds</em>）。生命周期 bound 帮助 Rust 验证泛型的引用不会存在的比其引用的数据更久。</p>
+<p>例如，考虑一下一个封装了引用的类型。回忆一下第十五章 “<code>RefCell&lt;T&gt;</code> 和内部可变性模式” 部分的 <code>RefCell&lt;T&gt;</code> 类型：其 <code>borrow</code> 和 <code>borrow_mut</code> 方法分别返回 <code>Ref</code> 和 <code>RefMut</code> 类型。这些类型是引用的封装，他们在运行时记录检查借用规则。<code>Ref</code> 结构体的定义如示例 19-16 所示，目前还不带有生命周期 bound：</p>
+<p><span class="filename">文件名: src/lib.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile">struct Ref&lt;'a, T&gt;(&amp;'a T);
+</code></pre>
+<p><span class="caption">示例 19-16: 定义结构体来封装泛型的引用，没有生命周期 bound</span></p>
+<p>若不显式限制生命周期 <code>'a</code> 为与泛型参数 <code>T</code> 有关，会得到一个错误因为 Rust 不知道泛型 <code>T</code> 会存活多久：</p>
+<pre><code class="language-text">error[E0309]: the parameter type `T` may not live long enough
+ --&gt; src/lib.rs:1:19
+  |
+1 | struct Ref&lt;'a, T&gt;(&amp;'a T);
+  |                   ^^^^^^
+  |
+  = help: consider adding an explicit lifetime bound `T: 'a`...
+note: ...so that the reference type `&amp;'a T` does not outlive the data it points at
+ --&gt; src/lib.rs:1:19
+  |
+1 | struct Ref&lt;'a, T&gt;(&amp;'a T);
+  |                   ^^^^^^
+</code></pre>
+<p>因为 <code>T</code> 可以是任意类型，<code>T</code> 自身也可能是一个引用，或者是一个存放了一个或多个引用的类型，而他们各自可能有着不同的生命周期。Rust 不能确认 <code>T</code> 会与 <code>'a</code> 存活的一样久。</p>
+<p>幸运的是，Rust 提供了这个情况下如何指定生命周期 bound 的有用建议：</p>
+<pre><code class="language-text">consider adding an explicit lifetime bound `T: 'a` so that the reference type
+`&amp;'a T` does not outlive the data it points at
+</code></pre>
+<p>示例 19-17 展示了如何按照这个建议，在声明泛型 <code>T</code> 时指定生命周期 bound。。</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+struct Ref&lt;'a, T: 'a&gt;(&amp;'a T);
+#}</code></pre></pre>
+<p><span class="caption">示例 19-17: 为 <code>T</code> 增加生命周期 bound 来指定 <code>T</code> 中的任何引用需至少与 <code>'a</code> 存活的一样久</span></p>
+<p>现在代码可以编译了，因为 <code>T: 'a</code> 语法指定了 <code>T</code> 可以为任意类型，不过如果它包含任何引用的话，其生命周期必须至少与 <code>'a</code> 一样长。</p>
+<p>我们可以选择不同的方法来解决这个问题，如示例 19-18 中 <code>StaticRef</code> 的结构体定义所示，通过在 <code>T</code> 上增加 <code>'static</code> 生命周期约束。这意味着如果 <code>T</code> 包含任何引用，他们必须有 <code>'static</code> 生命周期：</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+struct StaticRef&lt;T: 'static&gt;(&amp;'static T);
+#}</code></pre></pre>
+<p><span class="caption">示例 19-18: 在 <code>T</code> 上增加 <code>'static</code> 生命周期 bound，来限制 <code>T</code> 为只拥有 <code>'static</code> 生命周期的引用或没有引用的类型</span></p>
+<p>因为 <code>'static</code> 意味着引用必须同整个程序存活的一样长，一个不包含引用的类型满足所有引用都与整个程序存活的一样长的标准（因为他们没有引用）。对于借用检查器来说它关心的是引用是否存活的足够久，没有引用的类型与有永远存在的引用的类型并没有真正的区别；对于确定引用是否比其所引用的值存活得较短的目的来说两者是一样的。</p>
+<a class="header" href="ch19-02-advanced-lifetimes.html#trait-对象生命周期的推断" id="trait-对象生命周期的推断"><h3>trait 对象生命周期的推断</h3></a>
+<p>在第十七章的 “为使用不同类型的值而设计的 trait 对象” 部分，我们讨论了 trait 对象，它包含一个位于引用之后的 trait，这允许我们进行动态分发。我们所没有讨论的是如果 trait 对象中实现 trait 的类型带有生命周期时会发生什么。考虑一下示例 19-19，其中有 trait <code>Red</code> 和结构体 <code>Ball</code>。<code>Ball</code> 存放了一个引用（因此有一个生命周期参数）并实现了 trait <code>Red</code>。我们希望使用一个作为 trait 对象 <code>Box&lt;Red&gt;</code> 的 <code>Ball</code> 实例：</p>
+<p><span class="filename">文件名: src/main.rs</span></p>
+<pre><pre class="playpen"><code class="language-rust">trait Red { }
+
+struct Ball&lt;'a&gt; {
+    diameter: &amp;'a i32,
+}
+
+impl&lt;'a&gt; Red for Ball&lt;'a&gt; { }
+
+fn main() {
+    let num = 5;
+
+    let obj = Box::new(Ball { diameter: &amp;num }) as Box&lt;dyn Red&gt;;
+}
+</code></pre></pre>
+<p><span class="caption">示例 19-19: 使用一个带有生命周期的类型用于 trait 对象</span></p>
+<p>这段代码能没有任何错误的编译，即便并没有明确指出 <code>obj</code> 中涉及的任何生命周期。这是因为有如下生命周期与 trait 对象必须遵守的规则：</p>
+<ul>
+<li>trait 对象的默认生命周期是 <code>'static</code>。</li>
+<li>如果有 <code>&amp;'a X</code> 或 <code>&amp;'a mut X</code>，则默认生命周期是 <code>'a</code>。</li>
+<li>如果只有 <code>T: 'a</code> 从句， 则默认生命周期是 <code>'a</code>。</li>
+<li>如果有多个类似 <code>T: 'a</code> 的从句，则没有默认生命周期；必须明确指定。</li>
+</ul>
+<p>当必须明确指定时，可以为像 <code>Box&lt;Red&gt;</code> 这样的 trait 对象增加生命周期 bound，根据需要使用语法 <code>Box&lt;Foo + 'a&gt;</code> 或 <code>Box&lt;Foo + 'static&gt;</code>。正如其他的 bound，这意味着任何 <code>Red</code> trait 的实现如果在内部包含有引用, 这些引用就必须拥有与 trait 对象 bound 中所指定的相同的生命周期。</p>
+<a class="header" href="ch19-02-advanced-lifetimes.html#a匿名生命周期" id="a匿名生命周期"><h3>匿名生命周期</h3></a>
+<p>比方说有一个封装了一个字符串 slice 的结构体，如下：</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+struct StrWrap&lt;'a&gt;(&amp;'a str);
+#}</code></pre></pre>
+<p>可以像这样编写一个返回它们的函数：</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+# struct StrWrap&lt;'a&gt;(&amp;'a str);
+fn foo&lt;'a&gt;(string: &amp;'a str) -&gt; StrWrap&lt;'a&gt; {
+    StrWrap(string)
+}
+#}</code></pre></pre>
+<p>不过这里有很多的 <code>'a</code>！为了消除这些噪音，可以使用匿名生命周期，<code>'_</code>，如下：</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+# struct StrWrap&lt;'a&gt;(&amp;'a str);
+fn foo(string: &amp;str) -&gt; StrWrap&lt;'_&gt; {
+    StrWrap(string)
+}
+#}</code></pre></pre>
+<p><code>'_</code> 表明 “在此处使用省略的生命周期。” 这意味着我们仍然知道 <code>StrWrap</code> 包含一个引用，不过无需所有的生命周期注解来知道。</p>
+<p>其也能用于 <code>impl</code>；例如：</p>
+<pre><code class="language-rust ignore">// 冗余
+impl&lt;'a&gt; fmt::Debug for StrWrap&lt;'a&gt; {
+
+// 省略
+impl fmt::Debug for StrWrap&lt;'_&gt; {
+
+</code></pre>
+<p>接下来，让我们看看一些其他处理 trait 的高级功能吧！</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="ch19-01-unsafe-rust.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="ch19-03-advanced-traits.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="ch19-01-unsafe-rust.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="ch19-03-advanced-traits.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+
+        
+        <script src="searchindex.js" type="text/javascript" charset="utf-8"></script>
+        
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="ferris.js"></script>
+        
+
+    </body>
+</html>
