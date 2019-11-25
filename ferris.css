@@ -24,8 +24,8 @@ body.ayu .not_desired_behavior {
   z-index: 99;
   right: 5px;
   top: 30px;
-	width: 10%;
-	height: auto;
+  width: 10%;
+  height: auto;
 }
 
 .ferris-explain {
@@ -34,7 +34,7 @@ body.ayu .not_desired_behavior {
 
 body,html{overflow-x:hidden}
 blockquote{overflow-x:auto}
-code{word-break:break-word}
+:not(pre)>.hljs{display:inline;line-height:1.5em;}
 pre>.buttons button{color:#aaa}
 .content{padding:0 5px}
 :focus{outline:none}
