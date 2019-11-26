@@ -1,5 +1,6 @@
 # Rust 程序设计语言
 
+[Rust 程序设计语言](title-page.md)
 [前言](foreword.md)
 [介绍](ch00-00-introduction.md)
 
@@ -36,10 +37,10 @@
 
 ## 基本 Rust 技能
 
-- [使用包、Crate和模块管理不断增长的项目](ch07-00-managing-growing-projects-with-packages-crates-and-modules.md)
+- [使用包、Crate 和模块管理不断增长的项目](ch07-00-managing-growing-projects-with-packages-crates-and-modules.md)
     - [包和 crate](ch07-01-packages-and-crates.md)
     - [定义模块来控制作用域与私有性](ch07-02-defining-modules-to-control-scope-and-privacy.md)
-    - [路径来引用模块树中的项](ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md)
+    - [路径用于引用模块树中的项](ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md)
     - [使用 `use` 关键字将名称引入作用域](ch07-04-bringing-paths-into-scope-with-the-use-keyword.md)
     - [将模块分割进不同文件](ch07-05-separating-modules-into-different-files.md)
 
@@ -114,7 +115,6 @@
 
 - [高级特征](ch19-00-advanced-features.md)
     - [不安全的 Rust](ch19-01-unsafe-rust.md)
-    - [高级生命周期](ch19-02-advanced-lifetimes.md)
     - [高级 trait](ch19-03-advanced-traits.md)
     - [高级类型](ch19-04-advanced-types.md)
     - [高级函数与闭包](ch19-05-advanced-functions-and-closures.md)
