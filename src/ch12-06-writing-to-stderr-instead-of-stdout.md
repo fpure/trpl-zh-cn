@@ -1,4 +1,4 @@
-﻿## 将错误信息输出到标准错误而不是标准输出
+## 将错误信息输出到标准错误而不是标准输出
 
 > [ch12-06-writing-to-stderr-instead-of-stdout.md](https://github.com/rust-lang/book/blob/master/src/ch12-06-writing-to-stderr-instead-of-stdout.md)
 > <br>

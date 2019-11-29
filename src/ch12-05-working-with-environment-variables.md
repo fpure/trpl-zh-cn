@@ -1,4 +1,4 @@
-﻿## 处理环境变量
+## 处理环境变量
 
 > [ch12-05-working-with-environment-variables.md](https://github.com/rust-lang/book/blob/master/src/ch12-05-working-with-environment-variables.md)
 > <br>
