@@ -32,7 +32,7 @@ body.ayu .not_desired_behavior {
   width: 100px;
 }
 
-body,html{overflow-x:hidden}
+html,body{overflow-x:hidden}
 blockquote{overflow-x:auto}
 :not(pre)>.hljs{display:inline;line-height:1.5em;}
 pre>.buttons button{color:#aaa}
